@@ -1,0 +1,100 @@
+:: StoryTitle
+EJEMPLO
+
+:: UserScript[script]
+
+
+:: UserStylesheet[stylesheet]
+
+
+:: INICIO[START]
+El operario recibe un papel donde tiene una orden de producción con la cantidad de material que debe abonar. Se dirige a la tolva e ingresa cantidad de Kg de material solicitado y el material de abono cae a bandeja que esta en la banda transportadora para continuar su proceso hacia balanza de pesaje.
+
+@
+[[Digitalizar (Kg) en tablero digital]]
+{
+}
+<
+Personaje1Controller.MirarJugador(true) 
+Simulator.InitializeAudiosDirectory("TweenityInstructions")
+Simulator.Wait(2)
+Simulator.PlayLipsyncAvatar("Bienvenida")
+Simulator.PlayLipsyncAvatar("AccionesIniciales")
+>
+
+:: Digitalizar (Kg) en tablero digital
+Operario desde tolva donde se encuentra almacenado el material, digita cantidad en Kg de material orgánico que va transformar para cumplir orden de producción, luego de digitar en el tablero la cantidad de (Kg), automaticamente cae material en una bandeja que esta sobre banda transportadora.
+
+@
+[[Digita orden de producción de 10 Kg]]
+{
+
+}
+<
+Simulator.Wait(2)
+bandeja1.moverCaja("1";"Tolva")
+Simulator.Wait(10)
+bandeja1.caerAbonoTolva()
+Simulator.Wait(3)
+bandeja1.DetenerCaidaAbono()
+>
+
+::Digita orden de producción de 10 Kg
+Operario para cumplir orden de producción de 1000 Kg sabe que existen unos porcentajes en la formación de las 
+capas del (20%, 30% y 50%) sobre el total de la cantidad solicitada y por cada orden digitada se espera que caiga el material en 3 bandejas ´
+separadas dividido en los diferentes porcentajes y continua sobre la banda transportadora.
+@
+[[Verificar pesaje de material en balanza digital]]
+{}
+<
+bandeja1.activarAbono("1")
+Simulator.Wait(2)
+bandeja1.moverCaja("1";"bascula")
+>
+
+::Verificar pesaje de material en balanza digital 
+Operario visualiza y verifica según orden de producción digitada en tablero digital por medio de módulo de 
+balanza digital integrado a la banda transportadora el lote de 3 bandejas con la cantidad de material orgánico
+ en sus diferentes porcentajes para que pueda dirigirse hacia sitio de inoculación y compostación.
+¿Cantidad de material correcto por bandeja?,[[Continua material a proceso de inoculación y compostación]]
+¿Sobra material?,
+¿Falta material?
+@
+[[Continua material a proceso de inoculación y compostación]]
+
+{}
+<
+Simulator.Wait(2)
+bandeja1.calcularPeso("1";"1")
+Simulator.Wait(2)
+bandeja1.calcularPeso("2";"1")
+Simulator.Wait(2)
+bandeja1.calcularPeso("3";"1")
+Simulator.Wait(25)
+>
+
+:: Continua material a proceso de inoculación y compostación
+Si el lote de producción con la bandeja tiene el pesaje correcto, continua en la banda transportadora hacia sitio de disposición del material para proceso de inoculación y compostación.
+@
+[[Finalizar la simulación, se realizó correctamente el procedimiento]]
+{}
+<
+bandeja1.moverCaja("1";"quimicos")
+Simulator.Wait(10)
+bandeja1.moverCaja("1";"revolver")
+bandeja1.moverCaja("1";"secado")
+>
+
+:: Finalizar la simulación, se realizó correctamente el procedimiento[end]
+@
+[[X]]
+{}
+<
+CenterEyeAnchor.FadeOut()
+Simulator.Wait(6)
+CenterEyeAnchor.LoadScene("FinCorrecto")
+>
+
+
+
+

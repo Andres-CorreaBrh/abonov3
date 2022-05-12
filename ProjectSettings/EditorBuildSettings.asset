@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Tweenity/PC/Abono2.unity
+    guid: 734b55f6a3aa3164883ecf2d68d21f85
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4c7f7b2c4ee5a3240aaa2c1bd707de0e, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: eb2d5395145f35841b68780624cc519c, type: 2}
