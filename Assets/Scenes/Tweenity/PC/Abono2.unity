@@ -1777,6 +1777,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19853668, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 19861100, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
@@ -3155,6 +3159,7 @@ MonoBehaviour:
   quimicoB: {fileID: 628547491}
   quimicoC: {fileID: 0}
   particulasQuimico: {fileID: 1831803099}
+  detener: 0
 --- !u!1 &639445514
 GameObject:
   m_ObjectHideFlags: 0
@@ -3616,6 +3621,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btn100
       objectReference: {fileID: 0}
+    - target: {fileID: 2311635463340667504, guid: a30d8b8fc69cd5a40a05c8ecd0d9f3fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2311635463340667505, guid: a30d8b8fc69cd5a40a05c8ecd0d9f3fe, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -3986,7 +3995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5b4c91829237c4eb64e97a31b7e47a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.49
+      value: -0.82
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc5b4c91829237c4eb64e97a31b7e47a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5830,6 +5839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btn1000
       objectReference: {fileID: 0}
+    - target: {fileID: 2311635463340667504, guid: a30d8b8fc69cd5a40a05c8ecd0d9f3fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2311635463340667505, guid: a30d8b8fc69cd5a40a05c8ecd0d9f3fe, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7260,15 +7273,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5affd0edf7083541a94ee805206dc7a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.446
+      value: 19.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5affd0edf7083541a94ee805206dc7a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.155
+      value: -1.138
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5affd0edf7083541a94ee805206dc7a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.36
+      value: 0.3600006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5affd0edf7083541a94ee805206dc7a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7446,6 +7459,7 @@ MonoBehaviour:
   quimicoB: {fileID: 628547491}
   quimicoC: {fileID: 1749540432}
   particulasQuimico: {fileID: 1831803099}
+  detener: 0
 --- !u!1001 &1341693319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8084,6 +8098,7 @@ GameObject:
   - component: {fileID: 1461283393}
   - component: {fileID: 1461283395}
   - component: {fileID: 1461283394}
+  - component: {fileID: 1461283396}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -8098,13 +8113,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461283392}
-  m_LocalRotation: {x: 0.37742174, y: 0.036141187, z: -0.069279864, w: 0.92273885}
-  m_LocalPosition: {x: -5.016, y: 7.208, z: -4.938999}
+  m_LocalRotation: {x: 0.04315537, y: 0.015993223, z: -0.009059837, w: 0.9988993}
+  m_LocalPosition: {x: 12.4, y: 2.28, z: -4.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1709555002}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 44.55, y: 1.158, z: -8.113}
+  m_LocalEulerAnglesHint: {x: 4.963, y: 1.793, z: -0.962}
 --- !u!81 &1461283394
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8156,6 +8171,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1461283396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461283392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82ecb9728a1fd04b9190653e0cadbdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1297158292}
 --- !u!1001 &1467487929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10223,6 +10251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btn10
       objectReference: {fileID: 0}
+    - target: {fileID: 2311635463340667504, guid: a30d8b8fc69cd5a40a05c8ecd0d9f3fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2311635463340667505, guid: a30d8b8fc69cd5a40a05c8ecd0d9f3fe, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -10303,6 +10335,7 @@ MonoBehaviour:
   quimicoB: {fileID: 628547491}
   quimicoC: {fileID: 1749540432}
   particulasQuimico: {fileID: 1831803099}
+  detener: 0
 --- !u!1 &1774204757
 GameObject:
   m_ObjectHideFlags: 0
@@ -10457,7 +10490,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 10abcfc5ef8834a4a9f712a70719e39d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 55549c75a53c5764e9b4f00d0fcac65e, type: 2}
+      objectReference: {fileID: 2100000, guid: 18647c0bfd09fdb4b89c7e202b12f94d, type: 2}
     - target: {fileID: 919132149155446097, guid: 10abcfc5ef8834a4a9f712a70719e39d, type: 3}
       propertyPath: m_Name
       value: TOLVA
@@ -11819,7 +11852,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: e0ac740edb808b44cbe529a5ca68529b, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 55549c75a53c5764e9b4f00d0fcac65e, type: 2}
+      objectReference: {fileID: 2100000, guid: 18647c0bfd09fdb4b89c7e202b12f94d, type: 2}
     - target: {fileID: 919132149155446097, guid: e0ac740edb808b44cbe529a5ca68529b, type: 3}
       propertyPath: m_Name
       value: maquina_granuladora
@@ -12473,6 +12506,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e6004f947d57f40499d45d1bbfc35b8e, type: 3}
       propertyPath: m_Name
       value: Mesa
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e6004f947d57f40499d45d1bbfc35b8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6004f947d57f40499d45d1bbfc35b8e, type: 3}
       propertyPath: m_StaticEditorFlags
