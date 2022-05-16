@@ -79,11 +79,11 @@ Si el lote de producción con la bandeja tiene el pesaje correcto, continua en l
 bandeja1.moverCaja("1";"quimicos")
 Simulator.Wait(8)
 quimicoA.moverQuimico("A")
-Simulator.Wait(4)
+Simulator.Wait(5)
 quimicoA.destruirQuimico("A")
-Simulator.Wait(2)
-bandeja1.moverCaja("1";"revolver")
 Simulator.Wait(8)
+bandeja1.moverCaja("1";"revolver")
+Simulator.Wait(4)
 
 >
 
@@ -93,7 +93,7 @@ Simulator.Wait(8)
 {}
 <
 bandeja1.moverCaja("1";"secado")
-Simulator.Wait(8)
+Simulator.Wait(15)
 bandeja1.moverCaja("1";"contenedor")
 Simulator.Wait(8)
 contenedor.MoverCont()
