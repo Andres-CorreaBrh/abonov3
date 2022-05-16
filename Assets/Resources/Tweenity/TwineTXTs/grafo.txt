@@ -15,10 +15,7 @@ El operario recibe un papel donde tiene una orden de producción con la cantidad
 {
 }
 <
-Personaje1Controller.MirarJugador(true) 
-Simulator.InitializeAudiosDirectory("TweenityInstructions")
-Simulator.Wait(2)
-Simulator.PlayLipsyncAvatar("Bienvenida")
+
 Simulator.PlayLipsyncAvatar("AccionesIniciales")
 >
 
@@ -64,13 +61,13 @@ balanza digital integrado a la banda transportadora el lote de 3 bandejas con la
 
 {}
 <
-Simulator.Wait(2)
+Simulator.Wait(15)
 bandeja1.calcularPeso("1";"1")
 Simulator.Wait(2)
 bandeja1.calcularPeso("2";"1")
 Simulator.Wait(2)
 bandeja1.calcularPeso("3";"1")
-Simulator.Wait(25)
+Simulator.Wait(8)
 >
 
 :: Continua material a proceso de inoculación y compostación
@@ -80,9 +77,14 @@ Si el lote de producción con la bandeja tiene el pesaje correcto, continua en l
 {}
 <
 bandeja1.moverCaja("1";"quimicos")
-Simulator.Wait(10)
+Simulator.Wait(8)
+quimicoA.moverQuimico("A")
+Simulator.Wait(4)
+quimicoA.destruirQuimico("A")
+Simulator.Wait(2)
 bandeja1.moverCaja("1";"revolver")
-bandeja1.moverCaja("1";"secado")
+Simulator.Wait(8)
+
 >
 
 :: Finalizar la simulación, se realizó correctamente el procedimiento[end]
@@ -90,8 +92,17 @@ bandeja1.moverCaja("1";"secado")
 [[X]]
 {}
 <
-CenterEyeAnchor.FadeOut()
+bandeja1.moverCaja("1";"secado")
+Simulator.Wait(8)
+bandeja1.moverCaja("1";"contenedor")
+Simulator.Wait(8)
+contenedor.MoverCont()
+Simulator.Wait(8)
+maquina_granuladora.MoverGranu()
+Simulator.Wait(5)
+bandeja4.activarAbono("4")
 Simulator.Wait(6)
+CenterEyeAnchor.FadeOut()
 CenterEyeAnchor.LoadScene("FinCorrecto")
 >
 

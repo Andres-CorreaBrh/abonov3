@@ -13,6 +13,7 @@ public class MoverCaja : MonoBehaviour
     private Vector3 posicionbandeja2;
 
     private Vector3 posicionbandeja3;
+     private Vector3 posicionbandeja4;
 
     public Transform particulas;
 
@@ -26,6 +27,8 @@ public class MoverCaja : MonoBehaviour
 
     public GameObject bandeja3;
 
+    public GameObject bandeja4;
+
     public Text letrero;
 
     public GameObject bascula;
@@ -36,7 +39,9 @@ public class MoverCaja : MonoBehaviour
 
     public GameObject AbonoCaja3;
 
-    private string PesoEscogido = "10";
+    public GameObject AbonoCaja4;
+
+    private string PesoEscogido = "100";
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +70,14 @@ public class MoverCaja : MonoBehaviour
         else if (valor == "2")
         {
             StartCoroutine(MovimientoCaja2(lugar));
+        }
+        else if (valor == "3")
+        {
+            StartCoroutine(MovimientoCaja3(lugar));
+        }
+        else if (valor == "4")
+        {
+            //StartCoroutine(MovimientoCaja4(lugar));
         }
         else
         {
@@ -142,31 +155,38 @@ public class MoverCaja : MonoBehaviour
         }
         else if (lugar == "revolver")
         {
-            posicionbascula = bascula.transform.position;
-
+            var i = 0;
+            Debug.Log("Entro");
             for (; ; )
             {
-                bandeja1.transform.position =
-                    new Vector3(posicionbandeja1.x,
-                        posicionbandeja1.y,
-                        posicionbandeja1.z - 0.1f);
+                if (i == 1)
+                {
+                    yield return null;
+                }
+                else
+                {
+                    bandeja1.transform.position =
+                        new Vector3(posicionbandeja1.x,
+                            posicionbandeja1.y,
+                            posicionbandeja1.z - 0.1f);
 
-                yield return new WaitForSecondsRealtime(0.05f);
-                bandeja1.transform.position =
-                    new Vector3(posicionbandeja1.x,
-                        posicionbandeja1.y,
-                        posicionbandeja1.z + 0.1f);
-                yield return new WaitForSecondsRealtime(0.05f);
-                bandeja1.transform.position =
-                    new Vector3(posicionbandeja1.x,
-                        posicionbandeja1.y,
-                        posicionbandeja1.z - 0.1f);
-                yield return new WaitForSecondsRealtime(0.05f);
-                bandeja1.transform.position =
-                    new Vector3(posicionbandeja1.x,
-                        posicionbandeja1.y,
-                        posicionbandeja1.z + 0.1f);
-                yield return null;
+                    yield return new WaitForSecondsRealtime(0.09f);
+                    bandeja1.transform.position =
+                        new Vector3(posicionbandeja1.x,
+                            posicionbandeja1.y,
+                            posicionbandeja1.z + 0.1f);
+                    yield return new WaitForSecondsRealtime(0.09f);
+                    bandeja1.transform.position =
+                        new Vector3(posicionbandeja1.x,
+                            posicionbandeja1.y,
+                            posicionbandeja1.z - 0.1f);
+                    yield return new WaitForSecondsRealtime(0.09f);
+                    bandeja1.transform.position =
+                        new Vector3(posicionbandeja1.x,
+                            posicionbandeja1.y,
+                            posicionbandeja1.z + 0.1f);
+                    i = 1;
+                }
             }
         }
         else if (lugar == "secado")
@@ -176,7 +196,7 @@ public class MoverCaja : MonoBehaviour
             for (; ; )
             {
                 posicionbandeja1 = bandeja1.transform.position;
-                if (posicionbandeja1.x < -16.15)
+                if (posicionbandeja1.x < -15.06)
                 {
                     yield return null;
                 }
@@ -187,6 +207,43 @@ public class MoverCaja : MonoBehaviour
                             posicionbandeja1.y,
                             posicionbandeja1.z);
                     Debug.Log(posicionbandeja1.x);
+                    yield return new WaitForSecondsRealtime(0.1f);
+                }
+            }
+        }
+        else if (lugar == "contenedor")
+        {
+            posicionbascula = bascula.transform.position;
+
+            for (; ; )
+            {
+                posicionbandeja1 = bandeja1.transform.position;
+                if (posicionbandeja1.y > 0.84f)
+                {
+                    if (posicionbandeja1.x < -17.06)
+                    {
+                        bandeja1.transform.localRotation = Quaternion.Euler(-30.98f,0,0); 
+                        Destroy(gameObject, 0.5f);
+                        yield return null;
+                    }
+                    else
+                    {
+                        bandeja1.transform.position =
+                            new Vector3(posicionbandeja1.x - 0.1f,
+                                posicionbandeja1.y,
+                                posicionbandeja1.z);
+                        Debug.Log(posicionbandeja1.x);
+                        yield return new WaitForSecondsRealtime(0.1f);
+                        
+                    }
+                }
+                else
+                {
+                    bandeja1.transform.position =
+                        new Vector3(posicionbandeja1.x,
+                            posicionbandeja1.y + 0.1f,
+                            posicionbandeja1.z);
+                    Debug.Log(posicionbandeja1.y);
                     yield return new WaitForSecondsRealtime(0.1f);
                 }
             }
@@ -241,7 +298,7 @@ public class MoverCaja : MonoBehaviour
         }
     }
 
-    public IEnumerator MovimientoCaja3()
+    public IEnumerator MovimientoCaja3(string lugar)
     {
         posicionbascula = bascula.transform.position;
 
@@ -289,47 +346,47 @@ public class MoverCaja : MonoBehaviour
                 if (iteraccion == "1")
                 {
                     Debug.Log("entro  iteracion 1 peso 10");
-                    letrero.text = "8,000 KG";
+                    letrero.text = "8,000";
                 }
                 else if (iteraccion == "2")
                 {
                     Debug.Log("entro  iteracion 2 peso 10");
-                    letrero.text = "6,000 KG";
+                    letrero.text = "6,000";
                 }
                 else if (iteraccion == "3")
                 {
                     Debug.Log("entro  iteracion 3 peso 10");
-                    letrero.text = "5,000 KG";
+                    letrero.text = "5,000";
                 }
             }
             else if (peso == "100")
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "75,000 KG";
+                    letrero.text = "75,000";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "65,000 KG";
+                    letrero.text = "65,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "50,000 KG";
+                    letrero.text = "50,000";
                 }
             }
             else if (peso == "1000")
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "900,000 KG";
+                    letrero.text = "900,000";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "765,000 KG";
+                    letrero.text = "765,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "500,000 KG";
+                    letrero.text = "500,000";
                 }
             }
         }
@@ -339,45 +396,45 @@ public class MoverCaja : MonoBehaviour
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "4,500 KG";
+                    letrero.text = "4,500";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "4,000 KG";
+                    letrero.text = "4,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "3,000 KG";
+                    letrero.text = "3,000";
                 }
             }
             else if (peso == "100")
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "40,000 KG";
+                    letrero.text = "40,000";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "35,000 KG";
+                    letrero.text = "35,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "30,000 KG";
+                    letrero.text = "30,000";
                 }
             }
             else if (peso == "1000")
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "433,000 KG";
+                    letrero.text = "433,000";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "395,000 KG";
+                    letrero.text = "395,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "300,000 KG";
+                    letrero.text = "300,000";
                 }
             }
         }
@@ -387,45 +444,45 @@ public class MoverCaja : MonoBehaviour
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "3,500 KG";
+                    letrero.text = "3,500";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "3,000 KG";
+                    letrero.text = "3,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "2,000 KG";
+                    letrero.text = "2,000";
                 }
             }
             else if (peso == "100")
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = "29,000 KG";
+                    letrero.text = "29,000";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "25,000 KG";
+                    letrero.text = "25,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "20,000 KG";
+                    letrero.text = "20,000";
                 }
             }
             else if (peso == "1000")
             {
                 if (iteraccion == "1")
                 {
-                    letrero.text = ",000 KG";
+                    letrero.text = "300,000";
                 }
                 else if (iteraccion == "2")
                 {
-                    letrero.text = "250,000 KG";
+                    letrero.text = "250,000";
                 }
                 else if (iteraccion == "3")
                 {
-                    letrero.text = "200,000 KG";
+                    letrero.text = "200,000";
                 }
             }
         }
@@ -445,5 +502,28 @@ public class MoverCaja : MonoBehaviour
         {
             AbonoCaja3.SetActive(true);
         }
+        else if (numeroCaja == "4")
+        {
+            AbonoCaja4.SetActive(true);
+        }
+        
     }
+
+    public void eliminarCaja(string numeroCaja)
+    {
+         if (numeroCaja == "1")
+        {
+            Destroy(bandeja1);
+        }
+        else if (numeroCaja == "2")
+        {
+            Destroy(bandeja2);
+        }
+        else if (numeroCaja == "3")
+        {
+            Destroy(bandeja3);
+        }
+    }
+   
+    
 }
